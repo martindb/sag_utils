@@ -63,7 +63,7 @@ process.stdin.on('readable', () => {
             console.error(`Record length ${currentRecordLength} exceeds buffer size ${recordBuffer.length}. Aborting.`);
             process.stdin.destroy(); // Stop reading further input.
             // No more processing should happen after this critical error.
-            return; 
+            return;
           }
         }
       }
