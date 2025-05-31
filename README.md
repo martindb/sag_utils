@@ -1,3 +1,5 @@
+[![CI Tests](https://github.com/martindb/sag_utils/actions/workflows/ci.yml/badge.svg)](https://github.com/martindb/sag_utils/actions/workflows/ci.yml)
+
 # SAG Utilities (sag_utils)
 
 A collection of Node.js command-line utilities for converting data files between a Software AG-style binary format (SAG) and plain text.
