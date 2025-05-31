@@ -72,24 +72,20 @@ Would produce a binary file `output.sag` where the content is equivalent to `050
 
 Automated tests are highly recommended to ensure the utilities function correctly and to prevent regressions if changes are made in the future.
 
-A simple testing strategy could be:
+An automated test script, `run_tests.sh`, is provided to simplify this process. The script performs the following steps:
+1.  Uses the `test1.txt` file as the initial input.
+2.  Converts `test1.txt` to a temporary SAG file (`test1_generated.sag`) using `node txt2sag.js`.
+3.  Converts `test1_generated.sag` back to a temporary text file (`test1_output.txt`) using `node sag2txt.js`.
+4.  Compares `test1_output.txt` with the original `test1.txt` using `diff -u`.
+5.  Reports whether the test passed or failed and cleans up temporary files.
 
-1.  Create a sample input text file (e.g., `test_input.txt`).
-2.  Convert it to SAG format:
-    ```bash
-    node txt2sag.js < test_input.txt > test_output.sag
-    ```
-3.  Convert it back to text format:
-    ```bash
-    node sag2txt.js < test_output.sag > test_final_output.txt
-    ```
-4.  Verify that the final output matches the original input:
-    ```bash
-    diff test_input.txt test_final_output.txt
-    ```
-    If `diff` produces no output, the files are identical, and the test passes.
+To run the tests, simply execute the script from the root of the repository:
 
-This entire sequence can be placed in a shell script (e.g., `run_tests.sh`) for easy execution. The existing `test1.txt` and `test1.sag` could be used as a basis for these tests.
+```bash
+./run_tests.sh
+```
+
+Make sure the script has execute permissions (`chmod +x run_tests.sh`). If `diff` produces no output and the script reports success, the files are identical, and the test passes.
 
 ## Development Notes
 
